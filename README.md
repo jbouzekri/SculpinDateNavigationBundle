@@ -1,7 +1,9 @@
 SculpinDateNavigationBundle
 ===========================
 
-Generate date navigation block (with pages) in Sculpin.
+Generate date navigation block (with pages) in Sculpin :
+* It generates pages listing posts for each year and couple year/month
+* And a  block to navigate between this pages
 
 Installation
 ------------
