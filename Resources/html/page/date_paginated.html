@@ -1,0 +1,40 @@
+---
+layout: default
+title: Tag Archive
+generator: [jb_date_navigation, pagination]
+pagination:
+    max_per_page: 3
+    provider: page.date_posts
+---
+
+{% for post in page.pagination.items %}
+    <article>
+        <header>
+            <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        </header>
+        <div>
+            {{ post.blocks.content|raw }}
+        </div>
+        {% if post.meta.tags %}
+            <p class="tags">
+            Tags:
+            {% for tag in post.meta.tags %}
+                <a href="/blog/tags/{{ tag|url_encode(true) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </p>
+        {% endif %}
+    </article>
+{% endfor %}
+
+<div>
+{% if page.pagination.previous_page or page.pagination.next_page %}
+    <nav class="article clearfix">
+    {% if page.pagination.previous_page %}
+    <a class="previous" href="{{ site.url }}{{ page.pagination.previous_page.url }}" title="Previous Page"><span class="title">Previous Page</span></a>
+    {% endif %}
+    {% if page.pagination.next_page %}
+    <a class="next" href="{{ site.url }}{{ page.pagination.next_page.url }}" title="Next Page"><span class="title">Next Page</span></a>
+    {% endif %}
+    </nav>
+{% endif %}
+</div>

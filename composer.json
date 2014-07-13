@@ -1,0 +1,12 @@
+{
+    "name": "jbouzekri/sculpin-date-navigation-bundle",
+    "type": "sculpin-bundle",
+    "description": "Generate date navigation block (with pages) in Sculpin",
+    "keywords": ["sculpin", "php", "Bundle", "date", "navigation"],
+    "homepage": "https://github.com/jbouzekri/SculpinDateNavigationBundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": { "Jb\\Bundle\\DateNavigationBundle": "" }
+    },
+    "target-dir": "Jb/Bundle/DateNavigationBundle"
+}

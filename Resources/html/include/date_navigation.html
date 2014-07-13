@@ -1,0 +1,12 @@
+<ul>
+    {% for year, data in dates_posts %}
+        <li><a {% if page.permalink == permalink_factory.getYear(year) %}class="current"{% endif %} href="{{ permalink_factory.getYear(year) }}">{{ year }} ({{ data.posts|length }})</a></li>
+        {% if data.months|length %}
+            <ul>
+                {% for month, month_data in data.months %}
+                    <li><a {% if page.permalink == permalink_factory.getMonth(year, month) %}class="current"{% endif %} href="{{ permalink_factory.getMonth(year, month) }}">{{ month }} ({{ month_data.posts|length }})</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+</ul>

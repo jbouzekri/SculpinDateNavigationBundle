@@ -1,0 +1,35 @@
+parameters:
+    jb_sculpin.date_navigation.generator.class: Jb\Bundle\DateNavigationBundle\DateNavigationGenerator
+    jb_sculpin.date_navigation.data_provider.class: Jb\Bundle\DateNavigationBundle\DateNavigationProvider
+    jb_sculpin.tag_navigation.twig_function.class: Jb\Bundle\DateNavigationBundle\Twig\DateNavigationExtension
+    jb_sculpin.date_navigation.permalink_factory.class: Jb\Bundle\DateNavigationBundle\Permalink\PermalinkFactory
+
+services:
+    jb_sculpin.date_navigation.generator:
+        class: %jb_sculpin.date_navigation.generator.class%
+        arguments:
+            - @sculpin_content_types.types.posts.data_provider
+            - @jb_sculpin.date_navigation.data_provider
+            - @jb_sculpin.date_navigation.permalink_factory
+        tags:
+            - { name: sculpin.generator, alias: jb_date_navigation }
+
+    jb_sculpin.date_navigation.data_provider:
+        class: %jb_sculpin.date_navigation.data_provider.class%
+        arguments:
+            - @sculpin_content_types.types.posts.data_provider
+        tags:
+            - { name: sculpin.data_provider, alias: jb_posts_dates }
+
+    jb_sculpin.tag_navigation.twig_function:
+        class: %jb_sculpin.tag_navigation.twig_function.class%
+        arguments:
+            - @service_container
+        tags:
+            - { name: twig.extension }
+
+    jb_sculpin.date_navigation.permalink_factory:
+        class: %jb_sculpin.date_navigation.permalink_factory.class%
+        arguments:
+            - %jb_sculpin.date_navigation.permalink.mask_year%
+            - %jb_sculpin.date_navigation.permalink.mask_month%
