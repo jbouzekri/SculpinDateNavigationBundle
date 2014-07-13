@@ -60,9 +60,6 @@ Configuration
 jb_date_navigation:
     permalink_year: /:year/index.html
     permalink_month: /:year/:month/index.html
-    strategies:
-        - jb_sculpin.tag_cloud.strategy.shuffle
-        - jb_sculpin.tag_cloud.strategy.percent_size
 ```
 
 * jb_date_navigation.permalink_year : the url mask for the date year page
